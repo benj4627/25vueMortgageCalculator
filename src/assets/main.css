@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --white: hsl(0, 0%, 100%);
+  --lime: hsl(61, 70%, 52%);
+  --lightLime: hsl(61, 92%, 71%);
+  --red: hsl(4, 69%, 50%);
+  --slate100: hsl(202, 86%, 94%);
+  --slate300: hsl(203, 41%, 72%);
+  --slate500: hsl(200, 26%, 54%);
+  --slate700: hsl(200, 24%, 40%);
+  --slate900: hsl(202, 55%, 16%);
+  --borderRadius: 15px;
+  --largeSpacing: 2.5rem;
+  --smallSpacing: 1rem;
+}
+
+/* reset template */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background-color: var(--slate100);
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+  font-weight: normal;
+}
+
+p {
+  text-wrap: pretty; 
+  max-width: 75ch;
+  margin-bottom: 2rem;
+  line-height: 1.5rem;
+}
+
+img,
+picture,
+svg,
+video {
+  max-width: 100%;
+  display: block; 
+  height: auto; 
+}
+
+button,
+input,
+form {
+  font: inherit;
+}
