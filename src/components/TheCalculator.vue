@@ -47,7 +47,18 @@ const calculate = () => {
   }
 
   totalRepayment.value = (monthlyPayment.value * totalPayments).toFixed(2);
+
+  
 };
+//clear all function
+const clearAll = () => {
+mortgageAmount.value = null;
+mortgageInterest.value = null;
+mortgageYear.value = null;
+monthlyPayment.value = null;
+totalRepayment.value = null;
+mortgageTermError.value = false;
+}
 
 </script>
 
@@ -57,7 +68,7 @@ const calculate = () => {
       <article class="calcContainer">
         <div class="titleContainer">
           <h1 class="calcTitle">Mortgage Calculator</h1>
-          <p>Clear All</p>
+          <p @click="clearAll" class="clearAll">Clear All</p>
         </div>
         <form id="mortgageForm" @submit="handleSubmit" class="form">
           <label for="mortgageAmount">Mortgage Amount</label>
@@ -137,16 +148,17 @@ const calculate = () => {
       </article>
   
       <article class="resultsContainer">
-  <!-- Only show the initial message if the monthly payment hasn't been calculated -->
+            <!-- Only show the initial message if the monthly payment hasn't been calculated e.g === null -->
             <img v-show="monthlyPayment === null" src="../assets/images/illustration-empty.svg" alt="Calculator image" />
             <h2 v-show="monthlyPayment === null">Results Shown Here</h2>
             <p v-show="monthlyPayment === null">
-                Complete the form and click “calculate repayments” to see what your monthly
+                Complete the form and click "Calculate Mortgage" to see what your monthly
                 repayments would be.
             </p>
 
             <!-- Conditional rendering for the dynamic results -->
             <transition name="fade">
+              <!-- Tjekker, om variablen monthlyPayment har en værdi forskellig fra null. Sikrer at sektionen kun vises, når der er data til at udfylde resultatfeltet. -->
                 <div v-if="monthlyPayment !== null" class="resultsDynamicContainer">
                     <h2>Your Results</h2>
                     <p class="resultText">Your results are shown below based on the information you provided. To adjust the results, edit the form and click "Calculate Mortgage" again.</p>
@@ -163,9 +175,17 @@ const calculate = () => {
     </section>
 </template>
   
-  
-
 <style scoped>
+.clearAll {
+  transition: .3s ease-in-out;
+}
+
+.clearAll:hover {
+  transform: scale(110%);
+  cursor: pointer;
+  color: var(--lime);
+}
+
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.5s ease;
 }
@@ -228,6 +248,7 @@ section {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
+    border-radius: 20px;
     box-shadow: 0px 10px 25px rgba(1, 86, 143, 0.161);
 }
 .resultsContainer {
@@ -243,6 +264,8 @@ section {
     border-radius: var(--borderRadius);
     border-bottom-left-radius: 80px;
     border-top-left-radius: 0px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
     transition: opacity 0.5s ease-in-out;
 }
 
@@ -355,7 +378,7 @@ form label {
     min-width: 40vw;
     height: fit-content;
     padding: var(--largeSpacing);
-    border-radius: var(--borderRadius);
+    border-radius: 40px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
